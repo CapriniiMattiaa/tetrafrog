@@ -1,1 +1,2 @@
 dgit add *
+e
