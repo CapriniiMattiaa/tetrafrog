@@ -6,4 +6,5 @@ int main() {
   int uy8asd = 8;
   cout << "ciaiiooo";
   cout << "come va" << endl;
+  return 0;
 }
