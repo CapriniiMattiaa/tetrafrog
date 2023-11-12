@@ -1,1 +1,1 @@
-d
+dgit add *
