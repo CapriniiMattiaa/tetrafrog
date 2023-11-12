@@ -1,3 +1,8 @@
+# Ignora i file di configurazione di VSCode
 .vscode
+# Ignora l'eseguibile
 a.out
+# Ignora le configurazioni del formatter
 .clang-format
+# Ignora i file ausiliari alla compilazione della documentazione (non TeX)
+documentazione/!*.tex
