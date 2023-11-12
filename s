@@ -1,2 +1,0 @@
-dgit add *
-e
