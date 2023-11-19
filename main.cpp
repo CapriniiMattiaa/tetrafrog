@@ -1,10 +1,19 @@
 #include <iostream>
+#include <ncurses.h>
 using namespace std;
 
 int main() {
-  int x = 3;
-  int uy8asd = 8;
-  cout << "ciaiiooo";
-  cout << "come va" << endl;
-  return 0;
+  initscr();
+
+  printw("SUS");
+  
+  int d = getch();
+
+
+  printw("%d", d);
+  printw("%d", d+1);
+
+  getch();
+
+  endwin();
 }
