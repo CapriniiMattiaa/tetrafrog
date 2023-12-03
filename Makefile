@@ -1,2 +1,2 @@
 comp: main.cpp
-	g++ main.cpp -lncurses -o out 
+	g++ main.cpp -lncurses 
