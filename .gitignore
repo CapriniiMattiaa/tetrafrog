@@ -1,8 +1,9 @@
 # Ignora i file di configurazione di VSCode
 .vscode
 
-# Ignora l'eseguibile
-a.out
+# Ignora i file oggetto e l'eseguibile
+src/*.o
+src/a.out
 
 # Ignora le configurazioni del formatter
 .clang-format
