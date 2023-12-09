@@ -3,7 +3,7 @@
 #include <ncurses.h>
 #include <unistd.h>
 using namespace std;
-//Sta roba sta nel mio file myfuncfirstsprint.cpp, modificate questo come volete
+
 void getMaxCoord(int &x, int &y){
 
 	getmaxyx(stdscr,y,x);
@@ -42,6 +42,10 @@ y +=1;
 mvprintw(y,x, "       _<   >_");
 y +=1;
 mvprintw(y,x, "       |      |");
+
+y +=1;
+
+printw("(Stampa della griglia e delle altre robe)(Eventualemente alla fine ricordarsi di ritornale al menu)" );
 
 }
 
