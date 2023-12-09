@@ -1,7 +1,6 @@
-Classifica Punteggi
-12
+1
 56
 14
-12
-56
-14
+13
+60
+44

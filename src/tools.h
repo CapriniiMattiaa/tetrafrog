@@ -1,0 +1,1 @@
+void selection_sort_reverted(int v[], int n);

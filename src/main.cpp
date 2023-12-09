@@ -9,6 +9,7 @@ int main() {
   Menu menu;
   menu.show();
 
-  getch();
   endwin();
+
+  return 0;
 }

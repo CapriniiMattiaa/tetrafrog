@@ -3,11 +3,6 @@
 #include <ncurses.h>
 #include <unistd.h>
 
-#include <fstream>
-#include <iostream>
-
-using namespace std;
-
 void Tetrafrog::startGame() {
   clear();
   int x = 0;
@@ -22,13 +17,6 @@ void Tetrafrog::startGame() {
   mvprintw(y, x, "       _<   >_");
   y += 1;
   mvprintw(y, x, "       |      |");
-}
 
-void Tetrafrog::addScore(int score) {
-  ofstream fout;
-  fout.open("./Leaderboard.txt", ios::app);
-
-  fout << score << endl;
-
-  fout.close();
+  getch();
 }
