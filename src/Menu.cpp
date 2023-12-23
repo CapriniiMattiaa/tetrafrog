@@ -10,6 +10,7 @@ void Menu::getMaxCoord(int &x, int &y) {
   x = x - 1;
 }
 
+
 void Menu::showLeaderboard() {
   this->w_leaderboard = newwin(NUM_SCORES_IN_LEADERBOARD + 2,
                                MAX_DIGIT_SCORE + 8, this->y, this->x);

@@ -1,5 +1,8 @@
-main: main.o Menu.o Tetrafrog.o Leaderboard.o tools.o
-	g++ -o a.out main.o Menu.o Tetrafrog.o Leaderboard.o tools.o -lncurses
+main: main.o Menu.o Tetrafrog.o Leaderboard.o tools.o Map.o
+	g++ -o a.out main.o Menu.o Tetrafrog.o Map.o Leaderboard.o tools.o -lncurses
+
+Map.o: Map.cpp Map.hpp
+	g++ -c Map.cpp -lncurses
 
 main.o: main.cpp Menu.hpp
 	g++ -c main.cpp -lncurses
