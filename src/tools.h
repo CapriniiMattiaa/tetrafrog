@@ -1,6 +1,26 @@
-const int NUM_SCORES_IN_LEADERBOARD = 10;
-const int MAX_DIGIT_SCORE = 10;
+#ifndef NUM_SCORES_IN_LEADERBOARD
+#define NUM_SCORES_IN_LEADERBOARD 10
+#endif
 
-		const int rows_grid = 20;
-		const int columns_grid = 10;
+#ifndef MAX_DIGIT_SCORE
+#define MAX_DIGIT_SCORE 10
+#endif
+
+#ifndef rows_grid
+#define rows_grid 20
+#endif
+
+#ifndef columns_grid
+#define columns_grid 10
+#endif
+
+#ifndef TETRIMINO_MAX_WIDTH
+#define TETRIMINO_MAX_WIDTH 3
+#endif
+
+#ifndef TETRIMINO_MAX_HEIGHT
+#define TETRIMINO_MAX_HEIGHT 4
+#endif
+
 void selection_sort_reverted(int v[], int n);
+void swap(int &a, int &b);

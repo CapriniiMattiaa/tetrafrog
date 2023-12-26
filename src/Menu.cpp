@@ -1,15 +1,10 @@
 #include "Menu.hpp"
 
-#include "Leaderboard.hpp"
-#include "Tetrafrog.hpp"
-#include "tools.h"
-
 void Menu::getMaxCoord(int &x, int &y) {
   getmaxyx(stdscr, y, x);
   y = y - 1;
   x = x - 1;
 }
-
 
 void Menu::showLeaderboard() {
   this->w_leaderboard = newwin(NUM_SCORES_IN_LEADERBOARD + 2,

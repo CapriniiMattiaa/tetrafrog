@@ -1,21 +1,14 @@
 #include "Tetrafrog.hpp"
 
-#include <ncurses.h>
-#include <unistd.h>
-
 void Tetrafrog::startGame() {
   clear();
   int x = 0;
   int y = 5;
 
-Map game_map;
+  // Set the coord correctly
+  // game_map.getCenterCoord(x,y);
 
-//Set the coord correctly
-//game_map.getCenterCoord(x,y);
-
-game_map.InitializeMap(x,y);
-
-
+  this->game_map.InitializeMap(x, y);
 
   y += 1;
   mvprintw(y, x, "         ()-()");
