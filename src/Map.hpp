@@ -6,7 +6,6 @@
 class Map {
  protected:
   int grid[rows_grid][columns_grid];
-
   WINDOW *main_grid;
 
  public:

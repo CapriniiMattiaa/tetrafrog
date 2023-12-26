@@ -4,6 +4,9 @@
 #include "Map.hpp"
 
 class Tetrafrog {
+ protected:
+  Map game_map;
+
  public:
   void startGame();
 };

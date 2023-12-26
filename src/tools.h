@@ -14,5 +14,13 @@
 #define columns_grid 10
 #endif
 
+#ifndef TETRIMINO_MAX_WIDTH
+#define TETRIMINO_MAX_WIDTH 3
+#endif
+
+#ifndef TETRIMINO_MAX_HEIGHT
+#define TETRIMINO_MAX_HEIGHT 4
+#endif
+
 void selection_sort_reverted(int v[], int n);
 void swap(int &a, int &b);
