@@ -1,8 +1,5 @@
 #include "Tetrafrog.hpp"
 
-#include <ncurses.h>
-#include <unistd.h>
-
 void Tetrafrog::startGame() {
   clear();
   int x = 0;
