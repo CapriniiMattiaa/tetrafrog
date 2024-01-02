@@ -10,7 +10,7 @@ class Map {
 
  public:
   void getCenterCoord(int &x, int &y);
-  void InitializeMap(int x, int y);
+  void InitializeMap();
   void InitializeGrid();
   void print_Map(int rows, int columns);
 };

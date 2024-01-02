@@ -8,7 +8,7 @@ void Tetrafrog::startGame() {
   // Set the coord correctly
   // game_map.getCenterCoord(x,y);
 
-  this->game_map.InitializeMap(x, y);
+  this->game_map.InitializeMap();
 
   y += 1;
   mvprintw(y, x, "         ()-()");
