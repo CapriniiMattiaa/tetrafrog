@@ -1,11 +1,14 @@
-#include <ncurses.h>
-#include <unistd.h>
+#include <iostream>
 
-#include "Leaderboard.hpp"
-#include "Tetrafrog.hpp"
-#include "tools.h"
+typedef Tetramino {
+    int tetramino[4][4];
+}
 
 class NextTetraminoViewer {
+    protected:
+    int sizeArray;
+
 public:
-    void displayNextTetramino(int nextTetramino[4][4]);
+    Tetramino generateRandomTetramino(Tetramino[]);
+    void arrayTetramini(Tetramino[]);
 };
