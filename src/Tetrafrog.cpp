@@ -1,5 +1,6 @@
 #include "Tetrafrog.hpp"
 #include "NextTetraminoViewer.hpp"
+#include "Score.hpp"
 
 void Tetrafrog::startGame() {
   clear();
@@ -40,9 +41,11 @@ void Tetrafrog::startGame() {
   y += 1;
   mvprintw(y, x, "  o   o   o      o   o    o");
 
-
   NextTetraminoViewer nxTrm;
   nxTrm.view();
+  Score scr;
+  scr.viewScore(32); //fake score
+
 
   getch();
 }
