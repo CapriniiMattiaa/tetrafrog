@@ -7,7 +7,7 @@ main.o: main.cpp Menu.hpp
 ScreenGame.o: ScreenGame.cpp ScreenGame.hpp
 	g++ -c ScreenGame.cpp -lncurses
 
-NextTetraminoViewer.o: ScreenGame.cpp ScreenGame.hpp
+NextTetraminoViewer.o: NextTetraminoViewer.cpp NextTetraminoViewer.hpp
 	g++ -c NextTetraminoViewer.cpp -lncurses
 
 Map.o: Map.cpp Map.hpp tools.h
