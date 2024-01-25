@@ -2,8 +2,8 @@
 #include <ncurses.h>
 #include <unistd.h>
 
-class NextTetraminoViewer {
+class Score {
 protected:
 public:
-    void view();
+    void viewScore(int number);
 };

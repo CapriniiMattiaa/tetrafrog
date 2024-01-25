@@ -1,13 +1,13 @@
-main: main.o Menu.o Tetrafrog.o ScreenGame.o NextTetraminoViewer.o Leaderboard.o Map.o I.o O.o J.o L.o S.o Z.o T.o tools.o
-	g++ -o a.out main.o Menu.o ScreenGame.o NextTetraminoViewer.o Tetrafrog.o Map.o Leaderboard.o I.o O.o J.o L.o S.o Z.o T.o tools.o -lncurses
+main: main.o Menu.o Tetrafrog.o Score.o NextTetraminoViewer.o Leaderboard.o Map.o I.o O.o J.o L.o S.o Z.o T.o tools.o
+	g++ -o a.out main.o Menu.o Score.o NextTetraminoViewer.o Tetrafrog.o Map.o Leaderboard.o I.o O.o J.o L.o S.o Z.o T.o tools.o -lncurses
 
 main.o: main.cpp Menu.hpp
 	g++ -c main.cpp -lncurses
 
-ScreenGame.o: ScreenGame.cpp ScreenGame.hpp
-	g++ -c ScreenGame.cpp -lncurses
+Score.o: Score.cpp Score.hpp
+	g++ -c Score.cpp -lncurses
 
-NextTetraminoViewer.o: ScreenGame.cpp ScreenGame.hpp
+NextTetraminoViewer.o: NextTetraminoViewer.cpp NextTetraminoViewer.hpp
 	g++ -c NextTetraminoViewer.cpp -lncurses
 
 Map.o: Map.cpp Map.hpp tools.h
