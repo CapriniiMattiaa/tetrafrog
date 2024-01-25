@@ -13,4 +13,5 @@ class Map {
   void InitializeMap();
   void InitializeGrid();
   void print_Map(int rows, int columns);
+  void print_Tetriminos();
 };
