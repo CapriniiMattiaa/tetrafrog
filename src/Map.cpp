@@ -6,6 +6,19 @@ void Map::getCenterCoord(int &x, int &y) {
   x = x / 2 - 1;
 }
 
+void Map::print_Tetriminos() {
+  for (int i = 0; i < rows_grid; i++) {
+    for (int j = 0; j < columns_grid; j++) {
+      if (this->grid[i][j] == 1 || this->grid[i][j] == 2) {
+        mvwprintw(main_grid, i, j * 2 + 2, "0");
+      } else {
+        mvwprintw(main_grid, i, j * 2 + 2, " ");
+      }
+    }
+  }
+  wrefresh(main_grid);
+}
+
 void Map::print_Map(int rows, int columns) {
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < columns; j++) {
@@ -32,12 +45,16 @@ void Map::InitializeGrid() {
       grid[i][j] = 0;
     }
   }
+  grid[5][5] = 1;
+  grid[5][6] = 1;
+  grid[6][5] = 1;
+  grid[6][6] = 1;
 }
 
 void Map::InitializeMap() {
   InitializeGrid();  // Setta la griglia a 0
 
-  int x,y;
+  int x, y;
   // Prendo la posizine dove andra la finestra e quindi la griglia
   getCenterCoord(x, y);
 
