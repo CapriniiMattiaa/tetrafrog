@@ -39,7 +39,35 @@ void Map::print_Map(int rows, int columns) {
   }
 }
 
-void Map::move_Right()
+WINDOW* Map::getW(){
+
+    return main_grid;
+
+}
+
+void Map::move_Left()
+{
+
+  for (int i = 0; i < rows_grid; i++)
+  {
+    for (int j = 0; j < columns_grid; j++)
+    {
+      if (this->grid[i][j] == 1)
+      {
+        if (j != 0)
+        {
+          this->grid[i][j] = 0;
+          this->grid[i][j - 1] = 1;
+        }else{
+            j=columns_grid; // BREAK
+
+        }
+      }
+    }
+  }
+
+}
+void Map::move_Right() //Cicli al contrario per Spostare senza problemi
 {
 
   for (int i = rows_grid - 1; i >= 0; i--)
@@ -53,7 +81,7 @@ void Map::move_Right()
           this->grid[i][j] = 0;
           this->grid[i][j + 1] = 1;
         }else{
-            j=-1;
+            j=-1; //BREAK
 
         }
       }

@@ -15,4 +15,6 @@ class Map {
   void print_Map(int rows, int columns);
   void print_Tetriminos();
   void move_Right();
+  void move_Left();
+  WINDOW* getW();
 };
