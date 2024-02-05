@@ -40,7 +40,7 @@ void Tetrafrog::startGame() {
   y += 1;
   mvprintw(y, x, "  /,-.,-.\\       /,-.,-.\\");
   y += 1;
-  mvprintw(y, x, "  o   o   o      o   o    o");
+  mvprintw(y, x, "  o   o   o      o   o    o(Press A toExit)");
 
   NextTetraminoViewer nxTrm;
   nxTrm.view();
@@ -48,6 +48,20 @@ void Tetrafrog::startGame() {
   scr.viewScore(32);  // fake score
 
   this->game_map.print_Tetriminos();
+keypad(stdscr, TRUE);
+  nodelay(stdscr, TRUE); //Funzione ncurses che non ferma il gioco se invocate funzione con interrupt
+  while(getch() != 'A'){ //IpoteticaFunzioneCheDiceSeGiocoFinito
+
+  if(getch()==KEY_RIGHT){
+    this->game_map.move_Right();
+
+    this->game_map.print_Tetriminos();
+    refresh();
+  }  
+
+
+
+  } 
 
   getch();
 }

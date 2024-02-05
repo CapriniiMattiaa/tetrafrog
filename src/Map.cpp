@@ -39,6 +39,29 @@ void Map::print_Map(int rows, int columns) {
   }
 }
 
+void Map::move_Right()
+{
+
+  for (int i = rows_grid - 1; i >= 0; i--)
+  {
+    for (int j = columns_grid - 1; j >= 0; j--)
+    {
+      if (this->grid[i][j] == 1)
+      {
+        if (j != columns_grid-1)
+        {
+          this->grid[i][j] = 0;
+          this->grid[i][j + 1] = 1;
+        }else{
+            j=-1;
+
+        }
+      }
+    }
+  }
+
+}
+
 void Map::InitializeGrid() {
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
