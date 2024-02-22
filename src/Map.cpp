@@ -7,6 +7,7 @@ void Map::getCenterCoord(int &x, int &y) {
 }
 
 void Map::print_Tetriminos() {
+
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
       if (this->grid[i][j] == 1 || this->grid[i][j] == 2) {
