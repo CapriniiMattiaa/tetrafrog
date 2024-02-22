@@ -7,6 +7,7 @@ void Map::getCenterCoord(int &x, int &y) {
 }
 
 void Map::print_Tetriminos() {
+
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
       if (this->grid[i][j] == 1 || this->grid[i][j] == 2) {
@@ -71,6 +72,8 @@ void Map::move_Right() //Cicli al contrario per Spostare senza problemi
 {
 
   for (int i = rows_grid - 1; i >= 0; i--) //Parto da row-1
+
+  for (int i = rows_grid - 1; i >= 0; i--) // Parto da row-1
   {
     for (int j = columns_grid - 1; j >= 0; j--)
     {
