@@ -71,6 +71,7 @@ void Map::move_Left()
 void Map::move_Right() //Cicli al contrario per Spostare senza problemi
 {
 
+
   for (int i = rows_grid - 1; i >= 0; i--)
   {
     for (int j = columns_grid - 1; j >= 0; j--)
