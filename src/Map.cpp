@@ -93,6 +93,28 @@ void Map::move_Right() //Cicli al contrario per Spostare senza problemi
 
 }
 
+//----
+
+void move_down(){
+  for (int j = 0; j < columns_grid; ++j) {
+    for (int i = rows_grid - 1; i > 0; --i) {
+      if (grid[i][j] == 1 && grid[i - 1][j] == 0) {
+        grid[i][j] = 0;
+        grid[i - 1][j] = 1;
+      }
+    }
+  }
+}
+void start_movement() {
+  while (true) {
+    move_down(); // down movement
+    print_Map(rows_grid + 1, columns_grid * 2 + 4); // print map after movement
+    this_thread::sleep_for(chrono::seconds(1)); // wait one second before movement
+  }
+}
+
+//----
+
 void Map::InitializeGrid() {
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
