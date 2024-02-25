@@ -79,6 +79,7 @@ void Tetrafrog::startGame() {
 
   // Loop di gioco
   Tetrimino nextTetrimino = generateTetrimino();
+  long int downCounter = 0;
   bool gameLoop = true;
   while (gameLoop) {  // IpoteticaFunzioneCheDiceSeGiocoFinito
     // Gestione movimenti
@@ -95,6 +96,10 @@ void Tetrafrog::startGame() {
       this->game_map.spawnTetrimino(nextTetrimino);
       nextTetrimino = generateTetrimino();
     }
+
+    if (downCounter == 0) this->game_map.move_down();
+    downCounter++;
+    downCounter %= 5000;
 
     // Gestione grafica
     this->game_map.print_Map();
