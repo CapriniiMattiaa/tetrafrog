@@ -1,11 +1,5 @@
 #include "Tetrafrog.hpp"
 
-Tetrafrog::Tetrafrog() {
-  this->game_map = Map();
-  this->score = Score();
-  this->ntv = NextTetraminoViewer();
-}
-
 void Tetrafrog::printFrog() {
   int x = 10;
   int y = 2;

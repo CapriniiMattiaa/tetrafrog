@@ -8,6 +8,6 @@ class Score {
   int score;
 
  public:
-  Score() {}
+  Score() { this->score = 0; }
   void viewScore();
 };

@@ -1,11 +1,9 @@
-#include "NextTetraminoViewer.hpp"
+#include "NextTetriminoViewer.hpp"
 
 #include <iostream>
 using namespace std;
 
-NextTetraminoViewer::NextTetraminoViewer() {}
-
-void NextTetraminoViewer::view() {
+void NextTetriminoViewer::view() {
   int x = 30;
   int y = 22;
 

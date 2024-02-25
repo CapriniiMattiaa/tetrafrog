@@ -3,9 +3,11 @@
 
 #include <iostream>
 
-class NextTetraminoViewer {
+class NextTetriminoViewer {
  protected:
+  WINDOW *w_next_tetrimino;
+
  public:
-  NextTetraminoViewer() {}
+  NextTetriminoViewer() {}
   void view();
 };

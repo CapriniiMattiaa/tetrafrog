@@ -2,17 +2,21 @@
 #include <unistd.h>
 
 #include "Map.hpp"
-#include "NextTetraminoViewer.hpp"
+#include "NextTetriminoViewer.hpp"
 #include "Score.hpp"
 
 class Tetrafrog {
  protected:
   Map game_map;
   Score score;
-  NextTetraminoViewer ntv;
+  NextTetriminoViewer ntv;
 
  public:
-  Tetrafrog() {}
+  Tetrafrog() {
+    this->game_map = Map();
+    this->score = Score();
+    this->ntv = NextTetriminoViewer();
+  }
   void printFrog();
   void startGame();
 };
