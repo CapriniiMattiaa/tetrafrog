@@ -89,19 +89,10 @@ void Map::move_down() {
   }
 }
 
-void Map::start_movement() {
-  while (true) {
-    move_down();         // down movement
-    print_Tetriminos();  // print tetriminos after movement
-    this_thread::sleep_for(
-        chrono::seconds(1));  // wait one second before movement
-  }
-}
-
 //----
 
 void Map::spawnTetrimino(Tetrimino t) {
-  int wcindex = 3;
+  int wcindex = 4;
   for (int i = 0; i < TETRIMINO_MAX_WIDTH; i++) {
     for (int j = 0; j < TETRIMINO_MAX_HEIGHT; j++) {
       // NOTA BENE: += perché così capiamo in fretta se è game over
