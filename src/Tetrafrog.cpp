@@ -34,6 +34,11 @@ void Tetrafrog::printFrog() {
   mvprintw(y, x, "  o   o   o      o   o    o(Press A toExit)");
 }
 
+Tetrimino generateTetrimino() {
+  Tetrimino t;
+  
+}
+
 void Tetrafrog::startGame() {
   clear();
   printFrog();
@@ -59,7 +64,9 @@ void Tetrafrog::startGame() {
     this->game_map.print_Map();
     this->game_map.print_Tetriminos();
     this->score.viewScore();
-    this->ntv.view();
+    T i = T();
+    i.build();
+    this->ntv.view(i);
   }
 
   getch();

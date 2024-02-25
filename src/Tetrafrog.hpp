@@ -4,6 +4,13 @@
 #include "Map.hpp"
 #include "NextTetriminoViewer.hpp"
 #include "Score.hpp"
+#include "tetriminos/I.hpp"
+#include "tetriminos/J.hpp"
+#include "tetriminos/L.hpp"
+#include "tetriminos/O.hpp"
+#include "tetriminos/S.hpp"
+#include "tetriminos/T.hpp"
+#include "tetriminos/Z.hpp"
 
 class Tetrafrog {
  protected:
@@ -11,12 +18,14 @@ class Tetrafrog {
   Score score;
   NextTetriminoViewer ntv;
 
+  void printFrog();
+  Tetrimino generateTetrimino();
+
  public:
   Tetrafrog() {
     this->game_map = Map();
     this->score = Score();
     this->ntv = NextTetriminoViewer();
   }
-  void printFrog();
   void startGame();
 };

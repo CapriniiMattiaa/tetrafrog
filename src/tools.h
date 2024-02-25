@@ -15,11 +15,11 @@
 #endif
 
 #ifndef TETRIMINO_MAX_WIDTH
-#define TETRIMINO_MAX_WIDTH 3
+#define TETRIMINO_MAX_WIDTH 4
 #endif
 
 #ifndef TETRIMINO_MAX_HEIGHT
-#define TETRIMINO_MAX_HEIGHT 4
+#define TETRIMINO_MAX_HEIGHT 3
 #endif
 
 void selection_sort_reverted(int v[], int n);

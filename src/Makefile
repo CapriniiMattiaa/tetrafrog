@@ -1,4 +1,4 @@
-main: main.o Menu.o Tetrafrog.o Score.o NextTetriminoViewer.o Leaderboard.o Map.o I.o O.o J.o L.o S.o Z.o T.o tools.o
+main: main.o Menu.o Tetrafrog.o Score.o NextTetriminoViewer.o Leaderboard.o Map.o Tetrimino.hpp I.o O.o J.o L.o S.o Z.o T.o tools.o
 	g++ -o a.out main.o Menu.o Score.o NextTetriminoViewer.o Tetrafrog.o Map.o Leaderboard.o I.o O.o J.o L.o S.o Z.o T.o tools.o -lncurses
 
 main.o: main.cpp Menu.hpp
