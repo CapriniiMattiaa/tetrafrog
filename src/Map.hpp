@@ -1,3 +1,7 @@
+#include <chrono>
+#include <thread>
+using namespace std;
+
 #include <ncurses.h>
 #include <unistd.h>
 
