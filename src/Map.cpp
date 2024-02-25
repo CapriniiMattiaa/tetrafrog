@@ -7,7 +7,6 @@ void Map::getCenterCoord(int &x, int &y) {
 }
 
 void Map::print_Tetriminos() {
-
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
       if (this->grid[i][j] == 1 || this->grid[i][j] == 2) {
@@ -40,62 +39,44 @@ void Map::print_Map(int rows, int columns) {
   }
 }
 
-WINDOW* Map::getW(){
+WINDOW *Map::getW() { return main_grid; }
 
-    return main_grid;
-
-}
-
-void Map::move_Left()
-{
-
-  for (int i = 0; i < rows_grid; i++)
-  {
-    for (int j = 0; j < columns_grid; j++)
-    {
-      if (this->grid[i][j] == 1)
-      {
-        if (j != 0)
-        {
+void Map::move_Left() {
+  for (int i = 0; i < rows_grid; i++) {
+    for (int j = 0; j < columns_grid; j++) {
+      if (this->grid[i][j] == 1) {
+        if (j != 0) {
           this->grid[i][j] = 0;
           this->grid[i][j - 1] = 1;
-        }else{
-            j=columns_grid; // BREAK
-
+        } else {
+          j = columns_grid;  // BREAK
         }
       }
     }
   }
-
 }
-void Map::move_Right() //Cicli al contrario per Spostare senza problemi
+void Map::move_Right()  // Cicli al contrario per Spostare senza problemi
 {
+  for (int i = rows_grid - 1; i >= 0; i--)  // Parto da row-1
 
-  for (int i = rows_grid - 1; i >= 0; i--) //Parto da row-1
-
-  for (int i = rows_grid - 1; i >= 0; i--) // Parto da row-1
-  {
-    for (int j = columns_grid - 1; j >= 0; j--)
+    for (int i = rows_grid - 1; i >= 0; i--)  // Parto da row-1
     {
-      if (this->grid[i][j] == 1)
-      {
-        if (j != columns_grid-1)
-        {
-          this->grid[i][j] = 0;
-          this->grid[i][j + 1] = 1;
-        }else{
-            j=-1; //BREAK
-
+      for (int j = columns_grid - 1; j >= 0; j--) {
+        if (this->grid[i][j] == 1) {
+          if (j != columns_grid - 1) {
+            this->grid[i][j] = 0;
+            this->grid[i][j + 1] = 1;
+          } else {
+            j = -1;  // BREAK
+          }
         }
       }
     }
-  }
-
 }
 
 //----
 
-void Map::move_down(){
+void Map::move_down() {
   for (int j = 0; j < columns_grid; ++j) {
     for (int i = rows_grid - 1; i > 0; --i) {
       if (grid[i][j] == 1 && grid[i - 1][j] == 0) {
@@ -107,9 +88,10 @@ void Map::move_down(){
 }
 void Map::start_movement() {
   while (true) {
-    move_down(); // down movement
-    print_Map(rows_grid + 1, columns_grid * 2 + 4); // print map after movement
-    this_thread::sleep_for(chrono::seconds(1)); // wait one second before movement
+    move_down();                                     // down movement
+    print_Map(rows_grid + 1, columns_grid * 2 + 4);  // print map after movement
+    this_thread::sleep_for(
+        chrono::seconds(1));  // wait one second before movement
   }
 }
 

@@ -48,25 +48,25 @@ void Tetrafrog::startGame() {
   scr.viewScore(32);  // fake score
 
   this->game_map.print_Tetriminos();
-keypad(stdscr, TRUE);
-  nodelay(stdscr, TRUE); //Funzione ncurses che non ferma il gioco se invocate funzione con interrupt(getch)
-  while(getch() != 'A'){ //IpoteticaFunzioneCheDiceSeGiocoFinito
+  keypad(stdscr, TRUE);
+  nodelay(stdscr, TRUE);  // Funzione ncurses che non ferma il gioco se invocate
+                          // funzione con interrupt(getch)
+  while (getch() != 'A') {  // IpoteticaFunzioneCheDiceSeGiocoFinito
 
-  if(getch()==KEY_RIGHT){
-    this->game_map.move_Right();
+    if (getch() == KEY_RIGHT) {
+      this->game_map.move_Right();
 
-    this->game_map.print_Tetriminos();
-  }  
+      this->game_map.print_Tetriminos();
+    }
 
-  if(getch()==KEY_LEFT){
-    this->game_map.move_Left();
+    if (getch() == KEY_LEFT) {
+      this->game_map.move_Left();
 
-    this->game_map.print_Tetriminos();
-  }  
+      this->game_map.print_Tetriminos();
+    }
 
-    //wrefresh(game_map.getW());
-
-  } 
+    // wrefresh(game_map.getW());
+  }
 
   getch();
 }
