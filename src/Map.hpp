@@ -9,6 +9,8 @@ using namespace std;
 
 class Map {
  protected:
+  int window_size_rows = rows_grid + 1;
+  int window_size_columns = columns_grid * 2 + 4;
   int grid[rows_grid][columns_grid];
   WINDOW *main_grid;
 
@@ -18,7 +20,7 @@ class Map {
   void move_down();
   void start_movement();
   void InitializeGrid();
-  void print_Map(int rows, int columns);
+  void print_Map();
   void print_Tetriminos();
   void move_Right();
   void move_Left();

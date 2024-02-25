@@ -3,8 +3,7 @@
 #include "NextTetraminoViewer.hpp"
 #include "Score.hpp"
 
-void Tetrafrog::startGame() {
-  clear();
+void Tetrafrog::printFrog() {
   int x = 10;
   int y = 2;
 
@@ -36,33 +35,34 @@ void Tetrafrog::startGame() {
   mvprintw(y, x, "  /,-.,-.\\       /,-.,-.\\");
   y += 1;
   mvprintw(y, x, "  o   o   o      o   o    o(Press A toExit)");
+}
 
+void Tetrafrog::startGame() {
+  clear();
+  printFrog();
   this->game_map.InitializeMap();
-
-  NextTetraminoViewer nxTrm;
-  nxTrm.view();
-
-  Score scr;
-  scr.viewScore(32);  // fake score
-
   this->game_map.print_Tetriminos();
   keypad(stdscr, TRUE);
-  nodelay(stdscr, TRUE);  // Funzione ncurses che non ferma il gioco se invocate
-                          // funzione con interrupt(getch)
-  long long int counter = 0;
-  while (getch() != 'A') {  // IpoteticaFunzioneCheDiceSeGiocoFinito
-    if (getch() == KEY_RIGHT) {
+  nodelay(stdscr, TRUE);  // Funzione ncurses che non ferma il gioco se //
+                          // invocate funzione con interrupt(getch)
+
+  // Loop di gioco
+  bool gameLoop = true;
+  while (gameLoop) {  // IpoteticaFunzioneCheDiceSeGiocoFinito
+    // Gestione movimenti
+    int c = getch();
+    if (c == KEY_RIGHT) {
       this->game_map.move_Right();
     }
-    if (getch() == KEY_LEFT) {
+    if (c == KEY_LEFT) {
       this->game_map.move_Left();
     }
 
-    if (counter == 0) this->game_map.move_down();
-    counter++;
-    counter %= INT64_MAX;
-
+    // Gestione grafica
+    this->game_map.print_Map();
     this->game_map.print_Tetriminos();
+    this->score.viewScore();
+    this->ntv.view();
   }
 
   getch();

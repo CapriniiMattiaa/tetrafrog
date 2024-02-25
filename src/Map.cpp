@@ -19,17 +19,17 @@ void Map::print_Tetriminos() {
   wrefresh(main_grid);
 }
 
-void Map::print_Map(int rows, int columns) {
-  for (int i = 0; i < rows; i++) {
-    for (int j = 0; j < columns; j++) {
+void Map::print_Map() {
+  for (int i = 0; i < window_size_rows; i++) {
+    for (int j = 0; j < window_size_columns; j++) {
       if (j == 0) {
         mvwprintw(main_grid, i, j, "{");
-      } else if (j == columns - 1) {
+      } else if (j == window_size_columns - 1) {
         mvwprintw(main_grid, i, j, "}");
-      } else if (j == 1 || j == columns - 2) {
+      } else if (j == 1 || j == window_size_columns - 2) {
         mvwprintw(main_grid, i, j, "|");
       } else {
-        if (i == rows - 1) {
+        if (i == window_size_rows - 1) {
           mvwprintw(main_grid, i, j, "-");
         } else {
           mvwprintw(main_grid, i, j, " ");
@@ -119,15 +119,11 @@ void Map::InitializeMap() {
   x = x - 12;
   y = y - 10;
 
-  // Prendo la grandezza della griglia != dalla grandezza della matrice griglia
-  int window_Size_rows = rows_grid + 1;            // Add the base of the grid
-  int window_Size_columns = columns_grid * 2 + 4;  // Add the lateral edges
-
-  main_grid = newwin(window_Size_rows, window_Size_columns, y, x);
+  main_grid = newwin(window_size_rows, window_size_columns, y, x);
   refresh();
 
   // Stampo la griglia
-  print_Map(window_Size_rows, window_Size_columns);
+  print_Map();
 
   wrefresh(main_grid);
 
