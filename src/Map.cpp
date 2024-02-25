@@ -118,8 +118,6 @@ void Map::InitializeGrid() {
 void Map::InitializeMap() {
   InitializeGrid();  // Setta la griglia a 0
 
-  start_movement();
-  
   int x, y;
   // Prendo la posizine dove andra la finestra e quindi la griglia
   getCenterCoord(x, y);
