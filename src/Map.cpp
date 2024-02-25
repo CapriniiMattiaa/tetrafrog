@@ -42,6 +42,8 @@ void Map::print_Map() {
 WINDOW *Map::getW() { return main_grid; }
 
 void Map::move_Left() {
+  // FIXME: deve prima verificare se è possibile muovere l'intero pezzo a
+  // sinistra
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
       if (this->grid[i][j] == 1) {
@@ -56,10 +58,11 @@ void Map::move_Left() {
   }
 }
 
-void Map::move_Right()  // Cicli al contrario per Spostare senza problemi
-{
-  for (int i = rows_grid - 1; i >= 0; i--)  // Parto da row-1
-  {
+void Map::move_Right() {
+  // Cicli al contrario per Spostare senza problemi
+  // FIXME: deve prima verificare se è possibile muovere
+  // l'intero pezzo a destra
+  for (int i = rows_grid - 1; i >= 0; i--) {  // Parto da row-1
     for (int j = columns_grid - 1; j >= 0; j--) {
       if (this->grid[i][j] == 1) {
         if (j != columns_grid - 1) {
@@ -97,16 +100,28 @@ void Map::start_movement() {
 
 //----
 
+void Map::spawnTetrimino(Tetrimino t) {
+  int wcindex = 3;
+  for (int i = 0; i < TETRIMINO_MAX_WIDTH; i++) {
+    for (int j = 0; j < TETRIMINO_MAX_HEIGHT; j++) {
+      // NOTA BENE: += perché così capiamo in fretta se è game over
+      // infatti se è già presente un pezzo fisso (2) ci sarà una cella
+      // di valore 3 --> in tal caso game over
+      this->grid[i][wcindex + j] += t.grid[i][j];
+    }
+  }
+}
+
 void Map::InitializeGrid() {
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
       grid[i][j] = 0;
     }
   }
-  grid[5][5] = 1;
+  /*grid[5][5] = 1;
   grid[5][6] = 1;
   grid[6][5] = 1;
-  grid[6][6] = 1;
+  grid[6][6] = 1;*/
 }
 
 void Map::InitializeMap() {

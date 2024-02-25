@@ -71,6 +71,7 @@ void Tetrafrog::startGame() {
   clear();
   printFrog();
   this->game_map.InitializeMap();
+  this->game_map.spawnTetrimino(generateTetrimino());
   this->game_map.print_Tetriminos();
   keypad(stdscr, TRUE);
   nodelay(stdscr, TRUE);  // Funzione ncurses che non ferma il gioco se //
@@ -89,7 +90,9 @@ void Tetrafrog::startGame() {
       this->game_map.move_Left();
     }
 
+    // Esempio di passaggio al Tetrimino successivo
     if (c == 'A') {
+      this->game_map.spawnTetrimino(nextTetrimino);
       nextTetrimino = generateTetrimino();
     }
 
