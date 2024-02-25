@@ -77,10 +77,10 @@ void Map::move_Right()  // Cicli al contrario per Spostare senza problemi
 
 void Map::move_down() {
   for (int j = 0; j < columns_grid; ++j) {
-    for (int i = rows_grid - 1; i > 0; --i) {
-      if (grid[i][j] == 1 && grid[i - 1][j] == 0) {
+    for (int i = 0; i < rows_grid - 1; ++i) {
+      if (grid[i][j] == 1 && grid[i + 1][j] == 0) {
         grid[i][j] = 0;
-        grid[i - 1][j] = 1;
+        grid[i + 1][j] = 1;
       }
     }
   }
