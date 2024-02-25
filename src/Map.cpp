@@ -41,83 +41,68 @@ void Map::print_Map() {
 
 WINDOW *Map::getW() { return main_grid; }
 
-bool Map::Check_If_PossibleR(){
+bool Map::Check_If_PossibleR() {
+  bool toReturn = true;
 
-bool toReturn = true;
-
-for(int i = 0; i<rows_grid; i++){
-
-  if(this->grid[i][columns_grid-1] == 1)
-  {
-    toReturn = false;
-
+  for (int i = 0; i < rows_grid; i++) {
+    if (this->grid[i][columns_grid - 1] == 1) {
+      toReturn = false;
+    }
   }
 
-
+  return toReturn;
 }
+bool Map::Check_If_PossibleL() {
+  bool toReturn = true;
 
-return toReturn;
-
-}
-bool Map::Check_If_PossibleL(){
-
-bool toReturn = true;
-
-for(int i = 0; i<rows_grid; i++){
-
-  if(this->grid[i][0] == 1)
-  {
-    toReturn = false;
-
+  for (int i = 0; i < rows_grid; i++) {
+    if (this->grid[i][0] == 1) {
+      toReturn = false;
+    }
   }
 
-
+  return toReturn;
 }
 
-return toReturn;
-
-}
 void Map::move_Left() {
   // FIXME: deve prima verificare se è possibile muovere l'intero pezzo a
   // sinistra
-
-  if(Check_If_PossibleL()){
-  for (int i = 0; i < rows_grid; i++) {
-    for (int j = 0; j < columns_grid; j++) {
-      if (this->grid[i][j] == 1) {
-        if (j != 0) {
-          this->grid[i][j] = 0;
-          this->grid[i][j - 1] = 1;
-        } else {
-          j = columns_grid;  // BREAK
+  if (Check_If_PossibleL()) {
+    for (int i = 0; i < rows_grid; i++) {
+      for (int j = 0; j < columns_grid; j++) {
+        if (this->grid[i][j] == 1) {
+          if (j != 0) {
+            this->grid[i][j] = 0;
+            this->grid[i][j - 1] = 1;
+          } else {
+            j = columns_grid;  // BREAK
+          }
         }
       }
     }
   }
-  }
-
 }
 
 void Map::move_Right() {
   // Cicli al contrario per Spostare senza problemi
   // FIXME: deve prima verificare se è possibile muovere
   // l'intero pezzo a destra
-
-  if(Check_If_PossibleR()){
-  for (int i = rows_grid - 1; i >= 0; i--) {  // Parto da row-1
-    for (int j = columns_grid - 1; j >= 0; j--) {
-      if (this->grid[i][j] == 1) {
-        if (j != columns_grid - 1) {
-          this->grid[i][j] = 0;
-          this->grid[i][j + 1] = 1;
-        } else {
-          j = -1;  // BREAK
+  if (Check_If_PossibleR()) {
+    for (int i = rows_grid - 1; i >= 0; i--) {  // Parto da row-1
+      for (int j = columns_grid - 1; j >= 0; j--) {
+        if (this->grid[i][j] == 1) {
+          if (j != columns_grid - 1) {
+            this->grid[i][j] = 0;
+            this->grid[i][j + 1] = 1;
+          } else {
+            j = -1;  // BREAK
+          }
         }
       }
     }
   }
 }
-}
+
 //----
 
 void Map::move_down() {
