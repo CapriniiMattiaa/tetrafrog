@@ -15,3 +15,5 @@ void selection_sort_reverted(int v[], int n) {
     if (selected != i) swap(v[i], v[selected]);
   }
 }
+
+int random_range(int min, int max) { return rand() % (max - min + 1) + min; }

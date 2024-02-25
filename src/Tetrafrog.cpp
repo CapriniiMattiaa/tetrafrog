@@ -1,8 +1,5 @@
 #include "Tetrafrog.hpp"
 
-#include "NextTetraminoViewer.hpp"
-#include "Score.hpp"
-
 void Tetrafrog::printFrog() {
   int x = 10;
   int y = 2;
@@ -37,16 +34,51 @@ void Tetrafrog::printFrog() {
   mvprintw(y, x, "  o   o   o      o   o    o(Press A toExit)");
 }
 
+Tetrimino Tetrafrog::generateTetrimino() {
+  int num = random_range(0, 6);
+  if (num == 0) {
+    I i = I();
+    i.build();
+    return i;
+  } else if (num == 1) {
+    J j = J();
+    j.build();
+    return j;
+  } else if (num == 2) {
+    L l = L();
+    l.build();
+    return l;
+  } else if (num == 3) {
+    O o = O();
+    o.build();
+    return o;
+  } else if (num == 4) {
+    S s = S();
+    s.build();
+    return s;
+  } else if (num == 5) {
+    T t = T();
+    t.build();
+    return t;
+  } else if (num == 6) {
+    Z z = Z();
+    z.build();
+    return z;
+  }
+}
+
 void Tetrafrog::startGame() {
   clear();
   printFrog();
   this->game_map.InitializeMap();
+  this->game_map.spawnTetrimino(generateTetrimino());
   this->game_map.print_Tetriminos();
   keypad(stdscr, TRUE);
   nodelay(stdscr, TRUE);  // Funzione ncurses che non ferma il gioco se //
                           // invocate funzione con interrupt(getch)
 
   // Loop di gioco
+  Tetrimino nextTetrimino = generateTetrimino();
   bool gameLoop = true;
   while (gameLoop) {  // IpoteticaFunzioneCheDiceSeGiocoFinito
     // Gestione movimenti
@@ -58,11 +90,17 @@ void Tetrafrog::startGame() {
       this->game_map.move_Left();
     }
 
+    // Esempio di passaggio al Tetrimino successivo
+    if (c == 'A') {
+      this->game_map.spawnTetrimino(nextTetrimino);
+      nextTetrimino = generateTetrimino();
+    }
+
     // Gestione grafica
     this->game_map.print_Map();
     this->game_map.print_Tetriminos();
     this->score.viewScore();
-    this->ntv.view();
+    this->ntv.view(nextTetrimino);
   }
 
   getch();

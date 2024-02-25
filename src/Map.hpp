@@ -5,6 +5,7 @@ using namespace std;
 #include <ncurses.h>
 #include <unistd.h>
 
+#include "Tetrimino.hpp"
 #include "tools.h"
 
 class Map {
@@ -20,6 +21,7 @@ class Map {
   void move_down();
   void start_movement();
   void InitializeGrid();
+  void spawnTetrimino(Tetrimino t);
   void print_Map();
   void print_Tetriminos();
   void move_Right();

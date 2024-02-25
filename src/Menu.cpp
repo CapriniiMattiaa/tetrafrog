@@ -49,6 +49,6 @@ void Menu::show() {
     mvprintw(this->y + 10, this->x, "(Ho detto z idiota)");
   }
 
-  Tetrafrog tetrafrog;
+  Tetrafrog tetrafrog = Tetrafrog();
   tetrafrog.startGame();
 }
