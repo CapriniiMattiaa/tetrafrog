@@ -55,23 +55,22 @@ void Map::move_Left() {
     }
   }
 }
+
 void Map::move_Right()  // Cicli al contrario per Spostare senza problemi
 {
   for (int i = rows_grid - 1; i >= 0; i--)  // Parto da row-1
-
-    for (int i = rows_grid - 1; i >= 0; i--)  // Parto da row-1
-    {
-      for (int j = columns_grid - 1; j >= 0; j--) {
-        if (this->grid[i][j] == 1) {
-          if (j != columns_grid - 1) {
-            this->grid[i][j] = 0;
-            this->grid[i][j + 1] = 1;
-          } else {
-            j = -1;  // BREAK
-          }
+  {
+    for (int j = columns_grid - 1; j >= 0; j--) {
+      if (this->grid[i][j] == 1) {
+        if (j != columns_grid - 1) {
+          this->grid[i][j] = 0;
+          this->grid[i][j + 1] = 1;
+        } else {
+          j = -1;  // BREAK
         }
       }
     }
+  }
 }
 
 //----
