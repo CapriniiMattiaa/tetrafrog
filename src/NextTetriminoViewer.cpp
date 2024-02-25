@@ -30,6 +30,8 @@ void NextTetriminoViewer::view(Tetrimino t) {
     for (int j = 0; j < TETRIMINO_MAX_HEIGHT; j++) {
       if (t.grid[i][j] == 1) {
         mvwprintw(this->w_next_tetrimino, i + 1, j * 2 + 1, "0");
+      } else {
+        mvwprintw(this->w_next_tetrimino, i + 1, j * 2 + 1, " ");
       }
     }
   }

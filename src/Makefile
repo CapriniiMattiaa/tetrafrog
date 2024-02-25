@@ -1,4 +1,4 @@
-main: main.o Menu.o Tetrafrog.o Score.o NextTetriminoViewer.o Leaderboard.o Map.o Tetrimino.hpp I.o O.o J.o L.o S.o Z.o T.o tools.o
+main: main.o Menu.o Tetrimino.o Tetrafrog.o Score.o NextTetriminoViewer.o Leaderboard.o Map.o  I.o O.o J.o L.o S.o Z.o T.o tools.o
 	g++ -o a.out main.o Menu.o Score.o NextTetriminoViewer.o Tetrafrog.o Map.o Leaderboard.o I.o O.o J.o L.o S.o Z.o T.o tools.o -lncurses
 
 main.o: main.cpp Menu.hpp
@@ -21,6 +21,9 @@ Tetrafrog.o: Tetrafrog.cpp Tetrafrog.hpp
 
 Leaderboard.o: Leaderboard.cpp Leaderboard.hpp tools.h
 	g++ -c Leaderboard.cpp -lncurses
+
+Tetrimino.o: Tetrimino.cpp Tetrimino.hpp tools.h
+	g++ -c Tetrimino.cpp
 
 I.o: tetriminos/I.cpp tetriminos/I.hpp Tetrimino.hpp
 	g++ -c tetriminos/I.cpp

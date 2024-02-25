@@ -22,5 +22,9 @@
 #define TETRIMINO_MAX_HEIGHT 3
 #endif
 
+#include <cstdlib>
+#include <ctime>
+
 void selection_sort_reverted(int v[], int n);
 void swap(int &a, int &b);
+int random_range(int min, int max);

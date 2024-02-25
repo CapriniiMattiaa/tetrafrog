@@ -34,9 +34,37 @@ void Tetrafrog::printFrog() {
   mvprintw(y, x, "  o   o   o      o   o    o(Press A toExit)");
 }
 
-Tetrimino generateTetrimino() {
-  Tetrimino t;
-  
+Tetrimino Tetrafrog::generateTetrimino() {
+  int num = random_range(0, 6);
+  if (num == 0) {
+    I i = I();
+    i.build();
+    return i;
+  } else if (num == 1) {
+    J j = J();
+    j.build();
+    return j;
+  } else if (num == 2) {
+    L l = L();
+    l.build();
+    return l;
+  } else if (num == 3) {
+    O o = O();
+    o.build();
+    return o;
+  } else if (num == 4) {
+    S s = S();
+    s.build();
+    return s;
+  } else if (num == 5) {
+    T t = T();
+    t.build();
+    return t;
+  } else if (num == 6) {
+    Z z = Z();
+    z.build();
+    return z;
+  }
 }
 
 void Tetrafrog::startGame() {
@@ -49,6 +77,7 @@ void Tetrafrog::startGame() {
                           // invocate funzione con interrupt(getch)
 
   // Loop di gioco
+  Tetrimino nextTetrimino = generateTetrimino();
   bool gameLoop = true;
   while (gameLoop) {  // IpoteticaFunzioneCheDiceSeGiocoFinito
     // Gestione movimenti
@@ -60,13 +89,15 @@ void Tetrafrog::startGame() {
       this->game_map.move_Left();
     }
 
+    if (c == 'A') {
+      nextTetrimino = generateTetrimino();
+    }
+
     // Gestione grafica
     this->game_map.print_Map();
     this->game_map.print_Tetriminos();
     this->score.viewScore();
-    T i = T();
-    i.build();
-    this->ntv.view(i);
+    this->ntv.view(nextTetrimino);
   }
 
   getch();
