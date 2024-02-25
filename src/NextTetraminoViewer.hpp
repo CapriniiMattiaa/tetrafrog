@@ -1,9 +1,11 @@
-#include <iostream>
 #include <ncurses.h>
 #include <unistd.h>
 
+#include <iostream>
+
 class NextTetraminoViewer {
-protected:
-public:
-    void view();
+ protected:
+ public:
+  NextTetraminoViewer() {}
+  void view();
 };

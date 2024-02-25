@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace std;
 
+Score::Score() { this->score = 0; }
+
 void Score::viewScore() {
   int x = 30;
   int y = 20;

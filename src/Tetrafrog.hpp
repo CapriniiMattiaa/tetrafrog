@@ -2,6 +2,8 @@
 #include <unistd.h>
 
 #include "Map.hpp"
+#include "NextTetraminoViewer.hpp"
+#include "Score.hpp"
 
 class Tetrafrog {
  protected:
