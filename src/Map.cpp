@@ -95,7 +95,7 @@ void Map::move_Right() //Cicli al contrario per Spostare senza problemi
 
 //----
 
-void move_down(){
+void Map::move_down(){
   for (int j = 0; j < columns_grid; ++j) {
     for (int i = rows_grid - 1; i > 0; --i) {
       if (grid[i][j] == 1 && grid[i - 1][j] == 0) {
@@ -105,7 +105,7 @@ void move_down(){
     }
   }
 }
-void start_movement() {
+void Map::start_movement() {
   while (true) {
     move_down(); // down movement
     print_Map(rows_grid + 1, columns_grid * 2 + 4); // print map after movement
