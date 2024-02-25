@@ -49,6 +49,7 @@ void Tetrafrog::startGame() {
   keypad(stdscr, TRUE);
   nodelay(stdscr, TRUE);  // Funzione ncurses che non ferma il gioco se invocate
                           // funzione con interrupt(getch)
+  long long int counter = 0;
   while (getch() != 'A') {  // IpoteticaFunzioneCheDiceSeGiocoFinito
     if (getch() == KEY_RIGHT) {
       this->game_map.move_Right();
@@ -57,10 +58,10 @@ void Tetrafrog::startGame() {
       this->game_map.move_Left();
     }
 
-    // this->game_map.move_down();  // down movement
-    // this_thread::sleep_for(chrono::seconds(1));  // wait one second before
-    // movement
-    this->game_map.move_down();
+    if (counter == 0) this->game_map.move_down();
+    counter++;
+    counter %= INT64_MAX;
+
     this->game_map.print_Tetriminos();
   }
 
