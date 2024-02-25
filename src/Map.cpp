@@ -85,10 +85,11 @@ void Map::move_down() {
     }
   }
 }
+
 void Map::start_movement() {
   while (true) {
-    move_down();                                     // down movement
-    print_Map(rows_grid + 1, columns_grid * 2 + 4);  // print map after movement
+    move_down();         // down movement
+    print_Tetriminos();  // print tetriminos after movement
     this_thread::sleep_for(
         chrono::seconds(1));  // wait one second before movement
   }
@@ -124,6 +125,7 @@ void Map::InitializeMap() {
 
   main_grid = newwin(window_Size_rows, window_Size_columns, y, x);
   refresh();
+
   // Stampo la griglia
   print_Map(window_Size_rows, window_Size_columns);
 
