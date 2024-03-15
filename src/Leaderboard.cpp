@@ -2,6 +2,7 @@
 
 #include "tools.h"
 
+
 int Leaderboard::countScores(ifstream &fin) {
   int length_scores = 0;
   while (!fin.eof()) {
