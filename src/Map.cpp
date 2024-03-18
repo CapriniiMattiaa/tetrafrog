@@ -19,44 +19,36 @@ void Map::print_Tetriminos() {
   wrefresh(main_grid);
 }
 
-
-void Map::PinMap(){
-
-  for (int i = rows_grid-1; i >= 0; i--) {
-    for (int j = columns_grid-1; j >= 0 ; j--) {
-
+void Map::PinMap() {
+  for (int i = rows_grid - 1; i >= 0; i--) {
+    for (int j = columns_grid - 1; j >= 0; j--) {
       if (this->grid[i][j] == 1) {
         this->grid[i][j] = 2;
+      }
     }
-    
-    }
-
-}
-
+  }
 }
 
 bool Map::PinTetriminos() {
+  bool pinned = false;
 
-bool pinned = false;
-
-  for (int i = rows_grid-1; i >= 0 && !pinned ; i--) {
-    for (int j = columns_grid-1; j >= 0 && !pinned ; j--) {
+  for (int i = rows_grid - 1; i >= 0 && !pinned; i--) {
+    for (int j = columns_grid - 1; j >= 0 && !pinned; j--) {
       if (this->grid[i][j] == 1) {
-        if(i == rows_grid-1){
+        if (i == rows_grid - 1) {
+          PinMap();
+          pinned = true;
+        } else {
+          if (this->grid[i + 1][j] == 2) {
             PinMap();
             pinned = true;
-        }else{
-            if(this->grid[i+1][j]==2){
-              PinMap();
-              pinned = true; 
-            }
+          }
         }
+      }
     }
   }
-  }
 
-return pinned;
-
+  return pinned;
 }
 void Map::print_Map() {
   for (int i = 0; i < window_size_rows; i++) {
@@ -86,14 +78,14 @@ bool Map::Check_If_PossibleR() {
   for (int i = 0; i < rows_grid && toReturn; i++) {
     if (this->grid[i][columns_grid - 1] == 1) {
       toReturn = false;
-    }else{
-       for(int j=0; j< columns_grid-1 && toReturn; j++){
-        if(this->grid[i][j] == 1){
-          if(this->grid[i][j+1] == 2){
+    } else {
+      for (int j = 0; j < columns_grid - 1 && toReturn; j++) {
+        if (this->grid[i][j] == 1) {
+          if (this->grid[i][j + 1] == 2) {
             toReturn = false;
           }
         }
-       }
+      }
     }
   }
 
@@ -103,21 +95,17 @@ bool Map::Check_If_PossibleL() {
   bool toReturn = true;
 
   for (int i = 0; i < rows_grid && toReturn; i++) {
-    if (this->grid[i][0] == 1 ) {
+    if (this->grid[i][0] == 1) {
       toReturn = false;
-    }else{
-
-       for(int j=1; j< columns_grid && toReturn; j++){
-        if(this->grid[i][j] == 1){
-          if(this->grid[i][j-1] == 2){
+    } else {
+      for (int j = 1; j < columns_grid && toReturn; j++) {
+        if (this->grid[i][j] == 1) {
+          if (this->grid[i][j - 1] == 2) {
             toReturn = false;
           }
         }
-       }
-
-
+      }
     }
-
   }
 
   return toReturn;
@@ -191,17 +179,16 @@ void Map::spawnTetrimino(Tetrimino t) {
 
 bool Map::checkLine(int row_index) {
   bool twos = true;
-  for (int i=0; i<columns_grid && twos; i++)
-    if (grid[row_index][i] != 2)
-      twos = false;
+  for (int i = 0; i < columns_grid && twos; i++)
+    if (grid[row_index][i] != 2) twos = false;
   return twos;
 }
 
 void Map::translateGrid(int index, int num) {
-  for (int i=0; i<rows_grid-index; i++) {
-    for (int j=0; j<columns_grid; j++) {
+  for (int i = 0; i < rows_grid - index; i++) {
+    for (int j = 0; j < columns_grid; j++) {
       // Copia il valore di grid[i][j] a grid[i+num][j]
-      grid[i+num][j] = grid[i][j];
+      grid[i + num][j] = grid[i][j];
       // Metti il valore di grid[i][j] a 0
       grid[i][j] = 0;
     }
@@ -213,7 +200,7 @@ void Map::checkAndDeleteLine() {
   // Quindi conta quante righe composte da soli 2 ci sono
   int first_index = -1;
   int counter = 0;
-  for (int i=rows_grid-1; i>=0; i--) {
+  for (int i = rows_grid - 1; i >= 0; i--) {
     if (checkLine(i)) {
       if (first_index == -1) {
         first_index = i;
@@ -221,7 +208,8 @@ void Map::checkAndDeleteLine() {
       counter++;
     }
   }
-  // Allora trasla tutto ciò che è sopra l'indice della prima riga all'indice della riga
+  // Allora trasla tutto ciò che è sopra l'indice della prima riga all'indice
+  // della riga
   if (first_index != -1) {
     translateGrid(first_index, counter);
   }
