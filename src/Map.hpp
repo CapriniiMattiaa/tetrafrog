@@ -29,6 +29,6 @@ class Map {
   void print_Tetriminos();
   void move_Right();
   void move_Left();
-  void checkandDeleteLine();
+  void checkAndDeleteLine();
   WINDOW *getW();
 };
