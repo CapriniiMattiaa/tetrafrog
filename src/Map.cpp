@@ -189,16 +189,50 @@ void Map::spawnTetrimino(Tetrimino t) {
   }
 }
 
+bool Map::checkLine(int row_index) {
+  bool twos = true;
+  for (int i=0; i<columns_grid && twos; i++)
+    if (grid[row_index][i] != 2)
+      twos = false;
+  return twos;
+}
+
+void Map::translateGrid(int index, int num) {
+  for (int i=0; i<rows_grid-index; i++) {
+    for (int j=0; j<columns_grid; j++) {
+      // Copia il valore di grid[i][j] a grid[i+num][j]
+      grid[i+num][j] = grid[i][j];
+      // Metti il valore di grid[i][j] a 0
+      grid[i][j] = 0;
+    }
+  }
+}
+
+void Map::checkAndDeleteLine() {
+  // Segnati l'indice della prima riga dal basso che è composta da 2
+  // Quindi conta quante righe composte da soli 2 ci sono
+  int first_index = -1;
+  int counter = 0;
+  for (int i=rows_grid-1; i>=0; i--) {
+    if (checkLine(i)) {
+      if (first_index == -1) {
+        first_index = i;
+      }
+      counter++;
+    }
+  }
+  // Allora trasla tutto ciò che è sopra l'indice della prima riga all'indice della riga
+  if (first_index != -1) {
+    translateGrid(first_index, counter);
+  }
+}
+
 void Map::InitializeGrid() {
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
       grid[i][j] = 0;
     }
   }
-  /*grid[5][5] = 1;
-  grid[5][6] = 1;
-  grid[6][5] = 1;
-  grid[6][6] = 1;*/
 }
 
 void Map::InitializeMap() {
