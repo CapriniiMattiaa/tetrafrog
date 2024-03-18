@@ -188,7 +188,7 @@ void Map::translateGrid(int index, int num) {
   }
 }
 
-void Map::checkAndDeleteLine() {
+int Map::checkAndDeleteLine() {
   // Segnati l'indice della prima riga dal basso che è composta da 2
   // Quindi conta quante righe composte da soli 2 ci sono
   int first_index = -1;
@@ -206,6 +206,7 @@ void Map::checkAndDeleteLine() {
   if (first_index != -1) {
     translateGrid(first_index, counter);
   }
+  return counter;
 }
 
 void Map::InitializeGrid() {

@@ -35,7 +35,7 @@ void Tetrafrog::printFrog() {
 }
 
 Tetrimino Tetrafrog::generateTetrimino() {
-  int num = random_range(0, 0);
+  int num = random_range(0, 6);
   if (num == 0) {
     I i = I();
     i.build();

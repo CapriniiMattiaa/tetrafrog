@@ -31,6 +31,6 @@ class Map {
   void move_Right();
   void move_Left();
   bool PinTetriminos();
-  void checkAndDeleteLine();
+  int checkAndDeleteLine();
   WINDOW *getW();
 };
