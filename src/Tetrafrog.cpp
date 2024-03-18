@@ -103,8 +103,8 @@ void Tetrafrog::startGame() {
 
     bool Spawn = false;
     if (downCounter == 0) {
-      this->game_map.move_down();
       Spawn = this->game_map.PinTetriminos();
+      this->game_map.move_down();
     }
     downCounter++;
     downCounter %= 5000 / TETRIMINO_SPEED;
