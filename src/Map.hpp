@@ -1,5 +1,3 @@
-#include <chrono>
-#include <thread>
 using namespace std;
 
 #include <ncurses.h>
@@ -15,12 +13,15 @@ class Map {
   int grid[rows_grid][columns_grid];
   WINDOW *main_grid;
 
+  bool Check_If_PossibleL();
+  bool Check_If_PossibleR();
+  bool checkLine(int row_index);
+  void translateGrid(int index, int num);
+
  public:
   void getCenterCoord(int &x, int &y);
   void InitializeMap();
-  void move_down();
-  bool Check_If_PossibleL();
-  bool Check_If_PossibleR();
+  void move_down();  
   void start_movement();
   void InitializeGrid();
   void spawnTetrimino(Tetrimino t);
@@ -28,5 +29,6 @@ class Map {
   void print_Tetriminos();
   void move_Right();
   void move_Left();
+  void checkandDeleteLine();
   WINDOW *getW();
 };

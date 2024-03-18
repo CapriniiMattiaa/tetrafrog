@@ -82,6 +82,9 @@ void Tetrafrog::startGame() {
   long int downCounter = 0;
   bool gameLoop = true;
   while (gameLoop) {  // IpoteticaFunzioneCheDiceSeGiocoFinito
+    // Verifica se c'è una linea completa (composta da 2)
+    this->game_map.checkAndDeleteLine();
+
     // Gestione movimenti
     int c = getch();
     if (c == KEY_RIGHT) {
