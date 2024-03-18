@@ -19,6 +19,45 @@ void Map::print_Tetriminos() {
   wrefresh(main_grid);
 }
 
+
+void Map::PinMap(){
+
+  for (int i = rows_grid-1; i >= 0; i--) {
+    for (int j = columns_grid-1; j >= 0 ; j--) {
+
+      if (this->grid[i][j] == 1) {
+        this->grid[i][j] = 2;
+    }
+    
+    }
+
+}
+
+}
+
+bool Map::PinTetriminos() {
+
+bool pinned = false;
+
+  for (int i = rows_grid-1; i >= 0 && !pinned ; i--) {
+    for (int j = columns_grid-1; j >= 0 && !pinned ; j--) {
+      if (this->grid[i][j] == 1) {
+        if(i == rows_grid-1){
+            PinMap();
+            pinned = true;
+        }else{
+            if(this->grid[i+1][j]==2){
+              PinMap();
+              pinned = true; 
+            }
+        }
+    }
+  }
+  }
+
+return pinned;
+
+}
 void Map::print_Map() {
   for (int i = 0; i < window_size_rows; i++) {
     for (int j = 0; j < window_size_columns; j++) {
@@ -44,9 +83,17 @@ WINDOW *Map::getW() { return main_grid; }
 bool Map::Check_If_PossibleR() {
   bool toReturn = true;
 
-  for (int i = 0; i < rows_grid; i++) {
+  for (int i = 0; i < rows_grid && toReturn; i++) {
     if (this->grid[i][columns_grid - 1] == 1) {
       toReturn = false;
+    }else{
+       for(int j=0; j< columns_grid-1 && toReturn; j++){
+        if(this->grid[i][j] == 1){
+          if(this->grid[i][j+1] == 2){
+            toReturn = false;
+          }
+        }
+       }
     }
   }
 
@@ -55,10 +102,22 @@ bool Map::Check_If_PossibleR() {
 bool Map::Check_If_PossibleL() {
   bool toReturn = true;
 
-  for (int i = 0; i < rows_grid; i++) {
-    if (this->grid[i][0] == 1) {
+  for (int i = 0; i < rows_grid && toReturn; i++) {
+    if (this->grid[i][0] == 1 ) {
       toReturn = false;
+    }else{
+
+       for(int j=1; j< columns_grid && toReturn; j++){
+        if(this->grid[i][j] == 1){
+          if(this->grid[i][j-1] == 2){
+            toReturn = false;
+          }
+        }
+       }
+
+
     }
+
   }
 
   return toReturn;
