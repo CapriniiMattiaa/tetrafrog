@@ -178,12 +178,12 @@ bool Map::checkLine(int row_index) {
 }
 
 void Map::translateGrid(int index, int num) {
-  for (int i = 0; i < rows_grid - index; i++) {
+  for (int i = index; i >= num; i--) {
     for (int j = 0; j < columns_grid; j++) {
       // Copia il valore di grid[i][j] a grid[i+num][j]
-      grid[i + num][j] = grid[i][j];
+      grid[i][j] = grid[i - num][j];
       // Metti il valore di grid[i][j] a 0
-      grid[i][j] = 0;
+      grid[i - num][j] = 0;
     }
   }
 }
