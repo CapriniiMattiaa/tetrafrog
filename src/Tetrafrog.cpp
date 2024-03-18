@@ -36,9 +36,6 @@ void Tetrafrog::printFrog() {
 
 Tetrimino Tetrafrog::generateTetrimino() {
   int num = random_range(0, 6);
-  O o = O();
-  o.build();
-  return o;
   if (num == 0) {
     I i = I();
     i.build();
@@ -103,8 +100,8 @@ void Tetrafrog::startGame() {
 
     bool Spawn = false;
     if (downCounter == 0) {
-      this->game_map.move_down();
       Spawn = this->game_map.PinTetriminos();
+      this->game_map.move_down();
     }
     downCounter++;
     downCounter %= 5000 / TETRIMINO_SPEED;

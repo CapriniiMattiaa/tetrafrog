@@ -31,7 +31,6 @@ void Map::PinMap() {
 
 bool Map::PinTetriminos() {
   bool pinned = false;
-
   for (int i = rows_grid - 1; i >= 0 && !pinned; i--) {
     for (int j = columns_grid - 1; j >= 0 && !pinned; j--) {
       if (this->grid[i][j] == 1) {
@@ -47,9 +46,9 @@ bool Map::PinTetriminos() {
       }
     }
   }
-
   return pinned;
 }
+
 void Map::print_Map() {
   for (int i = 0; i < window_size_rows; i++) {
     for (int j = 0; j < window_size_columns; j++) {
@@ -88,9 +87,9 @@ bool Map::Check_If_PossibleR() {
       }
     }
   }
-
   return toReturn;
 }
+
 bool Map::Check_If_PossibleL() {
   bool toReturn = true;
 
@@ -107,13 +106,10 @@ bool Map::Check_If_PossibleL() {
       }
     }
   }
-
   return toReturn;
 }
 
 void Map::move_Left() {
-  // FIXME: deve prima verificare se è possibile muovere l'intero pezzo a
-  // sinistra
   if (Check_If_PossibleL()) {
     for (int i = 0; i < rows_grid; i++) {
       for (int j = 0; j < columns_grid; j++) {
@@ -131,9 +127,6 @@ void Map::move_Left() {
 }
 
 void Map::move_Right() {
-  // Cicli al contrario per Spostare senza problemi
-  // FIXME: deve prima verificare se è possibile muovere
-  // l'intero pezzo a destra
   if (Check_If_PossibleR()) {
     for (int i = rows_grid - 1; i >= 0; i--) {  // Parto da row-1
       for (int j = columns_grid - 1; j >= 0; j--) {
@@ -185,17 +178,17 @@ bool Map::checkLine(int row_index) {
 }
 
 void Map::translateGrid(int index, int num) {
-  for (int i = 0; i < rows_grid - index; i++) {
+  for (int i = index; i >= num; i--) {
     for (int j = 0; j < columns_grid; j++) {
       // Copia il valore di grid[i][j] a grid[i+num][j]
-      grid[i + num][j] = grid[i][j];
+      grid[i][j] = grid[i - num][j];
       // Metti il valore di grid[i][j] a 0
-      grid[i][j] = 0;
+      grid[i - num][j] = 0;
     }
   }
 }
 
-void Map::checkAndDeleteLine() {
+int Map::checkAndDeleteLine() {
   // Segnati l'indice della prima riga dal basso che è composta da 2
   // Quindi conta quante righe composte da soli 2 ci sono
   int first_index = -1;
@@ -213,6 +206,7 @@ void Map::checkAndDeleteLine() {
   if (first_index != -1) {
     translateGrid(first_index, counter);
   }
+  return counter;
 }
 
 void Map::InitializeGrid() {
