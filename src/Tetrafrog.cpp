@@ -36,6 +36,9 @@ void Tetrafrog::printFrog() {
 
 Tetrimino Tetrafrog::generateTetrimino() {
   int num = random_range(0, 6);
+  O o = O();
+  o.build();
+  return o;
   if (num == 0) {
     I i = I();
     i.build();
@@ -81,7 +84,7 @@ void Tetrafrog::startGame() {
   Tetrimino nextTetrimino = generateTetrimino();
   long int downCounter = 0;
   bool gameLoop = true;
-  while (gameLoop) {  // IpoteticaFunzioneCheDiceSeGiocoFinito
+  while (gameLoop) {
     // Verifica se c'è una linea completa (composta da 2)
     this->game_map.checkAndDeleteLine();
 
@@ -93,15 +96,18 @@ void Tetrafrog::startGame() {
     if (c == KEY_LEFT) {
       this->game_map.move_Left();
     }
+    if (c == KEY_DOWN) {
+      // fallo andare giù velocemente
+      downCounter = 0;
+    }
 
     bool Spawn = false;
-
     if (downCounter == 0) {
       this->game_map.move_down();
       Spawn = this->game_map.PinTetriminos();
     }
     downCounter++;
-    downCounter %= 5000;
+    downCounter %= 5000 / TETRIMINO_SPEED;
     // Fisso Tetrimini setto Spawn
 
     // Esempio di passaggio al Tetrimino successivo

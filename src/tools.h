@@ -22,6 +22,10 @@
 #define TETRIMINO_MAX_HEIGHT 3
 #endif
 
+#ifndef TETRIMINO_SPEED
+#define TETRIMINO_SPEED 1
+#endif
+
 #include <cstdlib>
 #include <ctime>
 
