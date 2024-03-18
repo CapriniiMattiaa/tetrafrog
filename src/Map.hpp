@@ -12,6 +12,7 @@ class Map {
   int window_size_columns = columns_grid * 2 + 4;
   int grid[rows_grid][columns_grid];
   WINDOW *main_grid;
+  void PinMap();
 
   bool Check_If_PossibleL();
   bool Check_If_PossibleR();
@@ -29,6 +30,8 @@ class Map {
   void print_Tetriminos();
   void move_Right();
   void move_Left();
+  bool PinTetriminos();
   void checkAndDeleteLine();
   WINDOW *getW();
+
 };

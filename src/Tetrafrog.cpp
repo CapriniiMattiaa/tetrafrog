@@ -84,7 +84,7 @@ void Tetrafrog::startGame() {
   while (gameLoop) {  // IpoteticaFunzioneCheDiceSeGiocoFinito
     // Verifica se c'è una linea completa (composta da 2)
     this->game_map.checkAndDeleteLine();
-
+    
     // Gestione movimenti
     int c = getch();
     if (c == KEY_RIGHT) {
@@ -94,15 +94,23 @@ void Tetrafrog::startGame() {
       this->game_map.move_Left();
     }
 
+    bool Spawn = false;
+
+    if (downCounter == 0)
+    { this->game_map.move_down();
+Spawn = this->game_map.PinTetriminos();
+    }
+    downCounter++;
+    downCounter %= 5000;
+    //Fisso Tetrimini setto Spawn
+
     // Esempio di passaggio al Tetrimino successivo
-    if (c == 'A') {
+    if (Spawn) {
       this->game_map.spawnTetrimino(nextTetrimino);
       nextTetrimino = generateTetrimino();
     }
 
-    if (downCounter == 0) this->game_map.move_down();
-    downCounter++;
-    downCounter %= 5000;
+
 
     // Gestione grafica
     this->game_map.print_Map();
