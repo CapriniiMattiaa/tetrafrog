@@ -7,15 +7,29 @@ void Map::getCenterCoord(int &x, int &y) {
 }
 
 void Map::print_Tetriminos() {
+start_color();
+
+    init_pair(1, COLOR_WHITE, COLOR_WHITE);
+
+
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
       if (this->grid[i][j] == 1 || this->grid[i][j] == 2) {
-        mvwprintw(main_grid, i, j * 2 + 2, "0");
+        wattron(main_grid,COLOR_PAIR(1));
+        mvwprintw(main_grid, i, j * 2 + 2, "@");
+
+        mvwprintw(main_grid, i, j * 2 + 3, "@");
+
+  wattroff(main_grid,COLOR_PAIR(1));
       } else {
+
+        
         mvwprintw(main_grid, i, j * 2 + 2, " ");
+      
       }
     }
   }
+
   wrefresh(main_grid);
 }
 
