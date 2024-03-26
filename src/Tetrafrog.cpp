@@ -104,7 +104,11 @@ void Tetrafrog::startGame() {
   Tetrimino nextTetrimino = generateTetrimino();
   long int downCounter = 0;
   bool gameLoop = true;
-  while (gameLoop) {  // IpoteticaFunzioneCheDiceSeGiocoFinito
+  while (gameLoop) {
+    // Verifica se c'è una linea completa (composta da 2)
+    gameLoop = this->game_map.gameOver();
+    this->game_map.checkAndDeleteLine();
+
     // Gestione movimenti
     int c = getch();
     if (c == KEY_RIGHT) {
@@ -117,17 +121,26 @@ void Tetrafrog::startGame() {
       tetriminoUse = rotation(tetriminoUse);  
       this->score.calcPoint(random_range(1, 4));   //n. righe completate contemporaneamente
     }
+    if (c == KEY_DOWN) {
+      // fallo andare giù velocemente
+      downCounter = 0;
+    }
+
+    bool Spawn = false;
+    if (downCounter == 0) {
+      Spawn = this->game_map.PinTetriminos();
+      this->game_map.move_down();
+    }
+    downCounter++;
+    downCounter %= 2000 / TETRIMINO_SPEED;
+    // Fisso Tetrimini setto Spawn
 
     // Esempio di passaggio al Tetrimino successivo
-    if (c == 'A') {
+    if (Spawn) {
       this->game_map.spawnTetrimino(nextTetrimino);
       tetriminoUse = nextTetrimino;
       nextTetrimino = generateTetrimino();
     }
-
-    if (downCounter == 0) this->game_map.move_down();
-    downCounter++;
-    downCounter %= 5000;
 
     // Gestione grafica
     this->game_map.print_Map();
@@ -136,5 +149,22 @@ void Tetrafrog::startGame() {
     this->ntv.view(nextTetrimino);
   }
 
-  getch();
+  nodelay(stdscr, FALSE);  // Funzione ncurses che non ferma il gioco se //
+  
+  keypad(stdscr, FALSE);
+
+  int x;
+  int y;
+
+  getMaxCoord(x,y);
+mvprintw(y-y/2,x-x/4,"Gameover:()");
+
+refresh();
+    getch();
+    getch();
+
+  
+
+
+
 }

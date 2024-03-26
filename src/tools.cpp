@@ -1,5 +1,10 @@
 #include "tools.h"
-
+#include <ncurses.h>
+void getMaxCoord(int &x, int &y) {
+  getmaxyx(stdscr, y, x);
+  y = y - 1;
+  x = x - 1;
+}
 void swap(int &a, int &b) {
   int tmp = a;
   a = b;

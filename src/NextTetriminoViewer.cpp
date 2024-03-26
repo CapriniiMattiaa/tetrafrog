@@ -3,6 +3,12 @@
 #include <iostream>
 using namespace std;
 
+void NextTetriminoViewer::gameover() {
+
+printw("gameover:()");
+
+
+}
 void NextTetriminoViewer::view(Tetrimino t) {
   /*
   int x = 30;
