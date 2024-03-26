@@ -17,4 +17,5 @@ class NextTetriminoViewer {
     refresh();
   }
   void view(Tetrimino t);
+  void gameover();
 };

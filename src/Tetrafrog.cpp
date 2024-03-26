@@ -83,6 +83,7 @@ void Tetrafrog::startGame() {
   bool gameLoop = true;
   while (gameLoop) {
     // Verifica se c'è una linea completa (composta da 2)
+    gameLoop = this->game_map.gameOver();
     this->game_map.checkAndDeleteLine();
 
     // Gestione movimenti
@@ -104,7 +105,7 @@ void Tetrafrog::startGame() {
       this->game_map.move_down();
     }
     downCounter++;
-    downCounter %= 5000 / TETRIMINO_SPEED;
+    downCounter %= 2000 / TETRIMINO_SPEED;
     // Fisso Tetrimini setto Spawn
 
     // Esempio di passaggio al Tetrimino successivo
@@ -120,5 +121,22 @@ void Tetrafrog::startGame() {
     this->ntv.view(nextTetrimino);
   }
 
-  getch();
+  nodelay(stdscr, FALSE);  // Funzione ncurses che non ferma il gioco se //
+  
+  keypad(stdscr, FALSE);
+
+  int x;
+  int y;
+
+  getMaxCoord(x,y);
+mvprintw(y-y/2,x-x/4,"Gameover:()");
+
+refresh();
+    getch();
+    getch();
+
+  
+
+
+
 }

@@ -27,6 +27,8 @@ class Map {
   void InitializeGrid();
   void spawnTetrimino(Tetrimino t);
   void print_Map();
+  bool gameOver();
+
   void print_Tetriminos();
   void move_Right();
   void move_Left();
