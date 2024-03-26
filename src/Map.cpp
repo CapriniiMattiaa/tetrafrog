@@ -175,6 +175,13 @@ void Map::move_Right() {
   }
 }
 
+void Map::rotation(){
+  //trova coordinate()
+  //ruoto la matrice()
+  //incollo la matrice ruotata nelle stesse coordinate
+}
+
+
 //----
 
 void Map::move_down() {

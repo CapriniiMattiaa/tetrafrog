@@ -67,6 +67,7 @@ Tetrimino Tetrafrog::generateTetrimino() {
   }
 }
 
+/*
 Tetrimino Tetrafrog::rotation(Tetrimino block) {
   Tetrimino rotatedBlock = block; // Copia il tetrimino originale 
 
@@ -86,7 +87,7 @@ Tetrimino Tetrafrog::rotation(Tetrimino block) {
   this->game_map.spawnTetrimino(rotatedBlock);    // solo per capire se funziona la rotazione
 
   return rotatedBlock;
-}
+}*/
 
 
 void Tetrafrog::startGame() {
@@ -107,7 +108,8 @@ void Tetrafrog::startGame() {
   while (gameLoop) {
     // Verifica se c'è una linea completa (composta da 2)
     gameLoop = this->game_map.gameOver();
-    this->game_map.checkAndDeleteLine();
+    int linePoint = this->game_map.checkAndDeleteLine();
+    this->score.calcPoint(linePoint);
 
     // Gestione movimenti
     int c = getch();
@@ -118,8 +120,9 @@ void Tetrafrog::startGame() {
       this->game_map.move_Left();
     }
     if (c == KEY_UP) {
-      tetriminoUse = rotation(tetriminoUse);  
-      this->score.calcPoint(random_range(1, 4));   //n. righe completate contemporaneamente
+      //rotazione
+      //this->game_map.rotation();
+      //tetriminoUse = rotation(tetriminoUse);  
     }
     if (c == KEY_DOWN) {
       // fallo andare giù velocemente
