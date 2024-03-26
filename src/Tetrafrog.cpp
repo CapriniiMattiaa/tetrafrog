@@ -67,11 +67,34 @@ Tetrimino Tetrafrog::generateTetrimino() {
   }
 }
 
+Tetrimino Tetrafrog::rotation(Tetrimino block) {
+  Tetrimino rotatedBlock = block; // Copia il tetrimino originale 
+
+  // Effettua la trasposizione della matrice
+  for (int i = 0; i < TETRIMINO_MAX_WIDTH; ++i) {
+      for (int j = i + 1; j < TETRIMINO_MAX_HEIGHT; ++j) {
+          swap(rotatedBlock.grid[i][j], rotatedBlock.grid[j][i]);
+      }
+  }
+
+  // Rifletti la matrice orizzontalmente
+  for (int i = 0; i < TETRIMINO_MAX_WIDTH / 2; ++i) {
+      for (int j = 0; j < TETRIMINO_MAX_HEIGHT; ++j) {
+          swap(rotatedBlock.grid[i][j], rotatedBlock.grid[TETRIMINO_MAX_WIDTH - 1 - i][j]);
+      }
+  }
+  this->game_map.spawnTetrimino(rotatedBlock);    // solo per capire se funziona la rotazione
+
+  return rotatedBlock;
+}
+
+
 void Tetrafrog::startGame() {
+  Tetrimino tetriminoUse = generateTetrimino();
   clear();
   printFrog();
   this->game_map.InitializeMap();
-  this->game_map.spawnTetrimino(generateTetrimino());
+  this->game_map.spawnTetrimino(tetriminoUse);
   this->game_map.print_Tetriminos();
   keypad(stdscr, TRUE);
   nodelay(stdscr, TRUE);  // Funzione ncurses che non ferma il gioco se //
@@ -90,10 +113,15 @@ void Tetrafrog::startGame() {
     if (c == KEY_LEFT) {
       this->game_map.move_Left();
     }
+    if (c == KEY_UP) {
+      tetriminoUse = rotation(tetriminoUse);  
+      this->score.calcPoint(random_range(1, 4));   //n. righe completate contemporaneamente
+    }
 
     // Esempio di passaggio al Tetrimino successivo
     if (c == 'A') {
       this->game_map.spawnTetrimino(nextTetrimino);
+      tetriminoUse = nextTetrimino;
       nextTetrimino = generateTetrimino();
     }
 

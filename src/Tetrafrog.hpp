@@ -22,6 +22,7 @@ class Tetrafrog {
 
   void printFrog();
   Tetrimino generateTetrimino();
+  Tetrimino rotation(Tetrimino block);
 
  public:
   Tetrafrog() {
