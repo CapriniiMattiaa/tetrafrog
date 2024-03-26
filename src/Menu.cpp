@@ -31,24 +31,30 @@ void Menu::showLeaderboard() {
 }
 
 void Menu::show() {
-  getMaxCoord(this->x, this->y);
-  this->x = this->x / 2 - 14;
-  this->y /= 4;
+  bool end = false;
+  while (!end) {
+    getMaxCoord(this->x, this->y);
+    this->x = this->x / 2 - 14;
+    this->y /= 4;
 
-  mvprintw(this->y, this->x, "Benvenuto su Tetrafrog!");
+    mvprintw(this->y, this->x, "Benvenuto su Tetrafrog!");
 
-  this->y++;
-  this->x += 2;
-  showLeaderboard();
+    this->y++;
+    this->x += 2;
+    showLeaderboard();
 
-  this->y += NUM_SCORES_IN_LEADERBOARD + 2;
-  mvaddch(this->y, this->x, '>');
-  printw("Play (premi z)");
+    this->y += NUM_SCORES_IN_LEADERBOARD + 2;
+    mvaddch(this->y, this->x, '>');
+    printw("Play (premi z)");
 
-  while (getch() != 'z') {
-    mvprintw(this->y + 10, this->x, "(Ho detto z idiota)");
+    int ch = getch();
+
+    if (ch == 'z') {
+      Tetrafrog tetrafrog = Tetrafrog();
+      tetrafrog.startGame();
+    } else if (ch == 'k')
+      end = true;
+    clear();
+    nodelay(stdscr, FALSE);
   }
-
-  Tetrafrog tetrafrog = Tetrafrog();
-  tetrafrog.startGame();
 }

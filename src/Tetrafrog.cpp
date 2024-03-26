@@ -97,7 +97,8 @@ void Tetrafrog::startGame() {
   clear();
   printFrog();
 
-  int color_code = 2;
+noecho();
+  int color_code = (rand()%6)+1; 
   this->game_map.InitializeMap();
   this->game_map.spawnTetrimino(tetriminoUse);
   this->game_map.print_Tetriminos(color_code);
@@ -137,7 +138,7 @@ void Tetrafrog::startGame() {
       this->game_map.move_down();
     }
     downCounter++;
-    downCounter %= 3000 / TETRIMINO_SPEED;
+    downCounter %= 5000 / TETRIMINO_SPEED;
     // Fisso Tetrimini setto Spawn
 
     // Esempio di passaggio al Tetrimino successivo
@@ -155,7 +156,7 @@ void Tetrafrog::startGame() {
     this->ntv.view(nextTetrimino);
   }
 
-  nodelay(stdscr, FALSE);  // Funzione ncurses che non ferma il gioco se //
+//  nodelay(stdscr, FALSE);  // Funzione ncurses che non ferma il gioco se //
   
   keypad(stdscr, FALSE);
 
@@ -166,8 +167,19 @@ void Tetrafrog::startGame() {
 mvprintw(y-y/2,x-x/4,"Gameover:()");
 
 refresh();
-    getch();
-    getch();
+
+bool pressed = false;
+
+    while (!pressed){
+
+if(getch() == 'k')
+pressed = true;
+
+
+
+
+}
+
 
   
 

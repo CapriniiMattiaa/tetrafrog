@@ -116,7 +116,6 @@ bool Map::Check_If_PossibleR() {
 
   for (int i = 0; i < rows_grid && toReturn; i++) {
     if (this->grid[i][columns_grid - 1] == 1) {
-using namespace std;
 
       toReturn = false;
     } else {
