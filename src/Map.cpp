@@ -25,15 +25,25 @@ for(int j = 0; j<columns_grid;j++){
 return toReturn;
 
 }
-void Map::print_Tetriminos() {
+void Map::print_Tetriminos(int color_code) {
   start_color();
 
-    init_pair(1, COLOR_GREEN, COLOR_GREEN);  
+    init_pair(1, 7, 7);  
+    init_pair(2, color_code, color_code);  
 
 
   for (int i = 0; i < rows_grid; i++) {
     for (int j = 0; j < columns_grid; j++) {
-      if (this->grid[i][j] == 1 || this->grid[i][j] == 2) {
+      if (this->grid[i][j] == 1){
+
+        wattron(main_grid, COLOR_PAIR(2));
+        mvwprintw(main_grid, i, j * 2 + 2, "0");
+        mvwprintw(main_grid, i, j * 2 + 3, "0");
+
+        wattroff(main_grid, COLOR_PAIR(2));
+
+
+      } else if (this->grid[i][j] == 2) {
 
         wattron(main_grid, COLOR_PAIR(1));
         mvwprintw(main_grid, i, j * 2 + 2, "0");
