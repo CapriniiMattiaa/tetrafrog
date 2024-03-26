@@ -30,7 +30,7 @@ class Map {
   void print_Map();
   bool gameOver();
 
-  void print_Tetriminos();
+  void print_Tetriminos(int color_code);
   void move_Right();
   void move_Left();
   bool PinTetriminos();

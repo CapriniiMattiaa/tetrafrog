@@ -1,4 +1,7 @@
 #include "Tetrafrog.hpp"
+#include <cstdlib>
+
+using namespace std;
 
 void Tetrafrog::printFrog() {
   int x = 10;
@@ -94,9 +97,11 @@ void Tetrafrog::startGame() {
   Tetrimino tetriminoUse = generateTetrimino();
   clear();
   printFrog();
+
+  int color_code = 2;
   this->game_map.InitializeMap();
   this->game_map.spawnTetrimino(tetriminoUse);
-  this->game_map.print_Tetriminos();
+  this->game_map.print_Tetriminos(color_code);
   keypad(stdscr, TRUE);
   nodelay(stdscr, TRUE);  // Funzione ncurses che non ferma il gioco se //
                           // invocate funzione con interrupt(getch)
@@ -135,11 +140,12 @@ void Tetrafrog::startGame() {
       this->game_map.move_down();
     }
     downCounter++;
-    downCounter %= 2000 / TETRIMINO_SPEED;
+    downCounter %= 3000 / TETRIMINO_SPEED;
     // Fisso Tetrimini setto Spawn
 
     // Esempio di passaggio al Tetrimino successivo
     if (Spawn) {
+    color_code = (rand()%6)+1; 
       this->game_map.spawnTetrimino(nextTetrimino);
       tetriminoUse = nextTetrimino;
       nextTetrimino = generateTetrimino();
@@ -147,7 +153,7 @@ void Tetrafrog::startGame() {
 
     // Gestione grafica
     this->game_map.print_Map();
-    this->game_map.print_Tetriminos();
+    this->game_map.print_Tetriminos(color_code);
     this->score.viewScore();
     this->ntv.view(nextTetrimino);
   }
