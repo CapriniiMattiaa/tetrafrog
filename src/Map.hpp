@@ -23,6 +23,7 @@ class Map {
   void getCenterCoord(int &x, int &y);
   void InitializeMap();
   void move_down();
+  void rotation();
   void start_movement();
   void InitializeGrid();
   void spawnTetrimino(Tetrimino t);
